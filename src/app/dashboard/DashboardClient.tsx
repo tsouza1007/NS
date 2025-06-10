@@ -17,7 +17,7 @@ export default function DashboardClient({ stats }: { stats: DashboardStats }) {
   const [localStats] = useState(stats)
 
   return (
-    <div className="grid grid-cols-12 min-h-screen w-full bg-black px-[50px]">
+    <div className="grid col-span-12 grid-cols-12 min-h-screen w-full px-[50px]">
       {/* Stats Section */}
       <div className="col-span-12 grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <StatsCard title="Current Streak" value={`${localStats.currentStreak} days`} icon="fire" />
