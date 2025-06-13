@@ -20,10 +20,10 @@ export const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon }) => {
   const Icon = iconMap[icon];
 
   return (
-    <div className="bg-white/10 rounded-2xl p-6 text-white shadow-lg flex flex-col items-start gap-2">
+    <div className="bg-white/10 w-full rounded-2xl p-6 text-black dark:text-white shadow-lg flex flex-col items-start gap-2">
       <Icon className="w-6 h-6 text-blue-400" />
-      <h3 className="text-sm text-gray-300">{title}</h3>
-      <p className="text-xl font-semibold">{value}</p>
+      <h3 className="text-sm text-black dark:text-white">{title}</h3>
+      <p className="text-4xl font-semibold text-black dark:text-white mt-4">{value}</p>
     </div>
   );
 };

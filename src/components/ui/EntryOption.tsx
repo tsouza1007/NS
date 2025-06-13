@@ -26,11 +26,14 @@ export const EntryOption: React.FC<EntryOptionProps> = ({
   const Icon = iconMap[icon];
 
   return (
-    <Link href={href} className="bg-white/10 rounded-2xl p-6 text-white shadow-lg hover:bg-white/20 transition duration-200">
+    <Link
+      href={href}
+      className="bg-white/10 rounded-2xl p-6 text-dark dark:text-white shadow-lg hover:bg-white/20 transition duration-200"
+    >
       <div className="flex flex-col gap-2">
         <Icon className="w-6 h-6 text-blue-400" />
         <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-sm text-gray-300">{description}</p>
+        <p className="text-sm text-dark dark:text-white">{description}</p>
       </div>
     </Link>
   );

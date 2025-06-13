@@ -6,6 +6,7 @@ import { NAVIGATION_ROUTES } from "@/lib/Props/NavigationProps/navigation";
 import { ModeToggle } from "../mode-toggle";
 import { usePathname } from "next/navigation";
 import { Button } from "./button";
+import { signOut } from "@/app/(auth)/logout/actions";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,9 +29,7 @@ export function Navbar() {
       <nav className="relative w-full py-4 bg-background border-b border-border flex items-center">
         {/* Logo or left-side content */}
         <div className="flex-grow">
-          <h1 className="text-xl font-bold text-foreground">
-            JournalMind
-          </h1>
+          <h1 className="text-xl font-bold text-foreground">JournalMind</h1>
         </div>
 
         {/* Hamburger menu (mobile only) */}
@@ -69,25 +68,36 @@ export function Navbar() {
         {/* Navigation links + theme toggle */}
         <ul
           className={`
-            flex-col sm:flex-row flex
-            items-center gap-6
-            absolute sm:static
-            bg-background dark:bg-background
-            w-full sm:w-auto
-            left-0 top-full sm:top-auto
-            border-b sm:border-none border-border
-            transition-all duration-300 ease-in-out
-            ${menuOpen ? "block" : "hidden"} sm:flex
-          `}
+    flex-col sm:flex-row flex
+    items-center gap-6
+    absolute sm:static
+    bg-background dark:bg-background
+    w-full sm:w-auto
+    left-0 top-full sm:top-auto
+    border-b sm:border-none border-border
+    transition-all duration-300 ease-in-out
+    ${menuOpen ? "block" : "hidden"} sm:flex
+  `}
         >
           {NAVIGATION_ROUTES.map((route) => (
             <li key={route.path} onClick={() => setMenuOpen(false)}>
-              <Link
-                href={route.path}
-                className="block px-4 py-2 text-sm font-medium text-gray-900 dark:text-white hover:underline"
-              >
-                {route.name}
-              </Link>
+              {route.name === "Login" ? (
+                <form action={signOut}>
+                  <button
+                    type="submit"
+                    className="block px-4 py-2 text-sm font-medium text-black dark:text-white hover:underline bg-transparent border-none cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </form>
+              ) : (
+                <Link
+                  href={route.path}
+                  className="block px-4 py-2 text-sm font-medium text-black dark:text-white hover:underline"
+                >
+                  {route.name}
+                </Link>
+              )}
             </li>
           ))}
           <li onClick={() => setMenuOpen(false)}>

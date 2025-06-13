@@ -1,9 +1,9 @@
-
+//dashboard/page.tsx
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 import DashboardClient from './DashboardClient'
 import Head from 'next/head'
-import LogoutButton from '@/components/LogoutButton'
+// import LogoutButton from '@/components/LogoutButton'
 
 
 export default async function Dashboard() {
@@ -29,7 +29,7 @@ export default async function Dashboard() {
       </Head>
       <DashboardClient stats={stats} />
       <div className="flex justify-end p-4">
-        <LogoutButton />
+        {/* <LogoutButton /> */}
       </div>
     </>
   );
